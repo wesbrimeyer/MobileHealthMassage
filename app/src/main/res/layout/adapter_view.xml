@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   android:weightSum="100" >
+    <TextView
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="33.3"
+        android:text="image"
+        />
+
+    <TextView
+        android:id="@+id/point1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="33.3"
+        android:text="Point" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Description"
+        android:id="@+id/Description1"
+        android:layout_weight="33.3"
+        />
+</LinearLayout>
