@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="150dp"
+    android:gravity="center"
+     >
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="30"
+        android:contentDescription="@string/trigger_point"
+        android:src="@drawable/si14" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="33"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/point_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Point S12\n (Left Shoulder)"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/triggerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/turn_on" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="33"
+        android:text="Description"
+        android:id="@+id/Description1"
+        />
+</LinearLayout>
