@@ -9,4 +9,16 @@
     <string name="title_activity_history">History</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="average_muscle_tension">Average Muscle Tension</string>
+    <string name="description">Description</string>
+    <string name="date">Date</string>
+    <string name="cancel_discard">Cancel/Discard</string>
+    <string name="save_data">Save Data</string>
+    <string name="view_history"><u><![CDATA[View History >>>]]></u></string>
+    <string name="description_shoulder_neck_etc">Description (shoulder, neck, etc.)</string>
+    <string name="recommendation">
+        Your muscle tension reading is higher than your average.
+        We recommend that you massage your acupuncture points.
+    </string>
+    <string name="get_a_massage"><![CDATA[Save Data & Go To Massage]]></string>
 </resources>

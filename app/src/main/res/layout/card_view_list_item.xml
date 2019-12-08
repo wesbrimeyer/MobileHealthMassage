@@ -19,8 +19,9 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:maxHeight="150dp"
-        android:layout_marginHorizontal="48dp"
-        android:text="Mobile Health"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:text="@string/massage"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="28sp"
         />

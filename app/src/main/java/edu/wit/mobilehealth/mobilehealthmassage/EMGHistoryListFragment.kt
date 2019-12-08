@@ -10,27 +10,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-import edu.wit.mobilehealth.mobilehealthmassage.dummy.DummyContent
-import edu.wit.mobilehealth.mobilehealthmassage.dummy.DummyContent.DummyItem
-
 /**
  * A fragment representing a list of Items.
  * Activities containing this fragment MUST implement the
- * [EMGHistoryList.OnListFragmentInteractionListener] interface.
+ * [EMGHistoryListFragment.OnListFragmentInteractionListener] interface.
  */
-class EMGHistoryList : Fragment() {
+class EMGHistoryListFragment : Fragment() {
 
     // TODO: Customize parameters
     private var columnCount = 1
 
     private var listener: OnListFragmentInteractionListener? = null
+    private var emgScans: List<EMGScanItem> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        arguments?.let {
-            columnCount = it.getInt(ARG_COLUMN_COUNT)
-        }
+        emgScans = DBConnection.instance(context!!).getScansList()
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -44,7 +41,7 @@ class EMGHistoryList : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = EMGScanItemRecyclerViewAdapter(DummyContent.ITEMS, listener)
+                adapter = EMGScanItemRecyclerViewAdapter(emgScans, listener)
             }
         }
         return view
@@ -77,21 +74,7 @@ class EMGHistoryList : Fragment() {
      */
     interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: DummyItem?)
+        fun onListFragmentInteraction(item: EMGScanItem?)
     }
 
-    companion object {
-
-        // TODO: Customize parameter argument names
-        const val ARG_COLUMN_COUNT = "column-count"
-
-        // TODO: Customize parameter initialization
-        @JvmStatic
-        fun newInstance(columnCount: Int) =
-                EMGHistoryList().apply {
-                    arguments = Bundle().apply {
-                        putInt(ARG_COLUMN_COUNT, columnCount)
-                    }
-                }
-    }
 }

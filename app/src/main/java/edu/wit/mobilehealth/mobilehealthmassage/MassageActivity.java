@@ -7,9 +7,11 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -58,7 +60,12 @@ public class MassageActivity extends AppCompatActivity implements IBluetoothAler
         pointListAdapter = new PointListAdapter(getApplicationContext(),R.layout.point_list_item, arrayList);
         listView.setAdapter(pointListAdapter);
 
-        getSupportActionBar().setBackgroundDrawable(getDrawable(android.R.color.holo_red_light));
+        ActionBar topBar = getSupportActionBar();
+        if (topBar != null) {
+            topBar.setDisplayHomeAsUpEnabled(true);
+            topBar.setSubtitle("Searching for device...");
+            topBar.setBackgroundDrawable(getDrawable(android.R.color.holo_red_light));
+        }
 
         BluetoothAdapter blt_adapter = BluetoothAdapter.getDefaultAdapter();
         if (blt_adapter == null) return;
@@ -78,6 +85,15 @@ public class MassageActivity extends AppCompatActivity implements IBluetoothAler
         }
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -101,6 +117,7 @@ public class MassageActivity extends AppCompatActivity implements IBluetoothAler
             @Override
             public void run() {
                 getSupportActionBar().setBackgroundDrawable(getDrawable(android.R.color.holo_green_light));
+                getSupportActionBar().setSubtitle("Connected!");
                 pointListAdapter.connectArduino(arduino);
             }
         });
@@ -117,6 +134,7 @@ public class MassageActivity extends AppCompatActivity implements IBluetoothAler
             @Override
             public void run() {
                 getSupportActionBar().setBackgroundDrawable(getDrawable(android.R.color.holo_red_light));
+                getSupportActionBar().setSubtitle("Searching for device...");
                 pointListAdapter.connectArduino(null);
             }
         });

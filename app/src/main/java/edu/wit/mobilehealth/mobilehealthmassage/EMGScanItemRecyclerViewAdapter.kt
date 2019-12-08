@@ -7,29 +7,27 @@ import android.view.ViewGroup
 import android.widget.TextView
 
 
-import edu.wit.mobilehealth.mobilehealthmassage.EMGHistoryList.OnListFragmentInteractionListener
-import edu.wit.mobilehealth.mobilehealthmassage.dummy.DummyContent.DummyItem
+import edu.wit.mobilehealth.mobilehealthmassage.EMGHistoryListFragment.OnListFragmentInteractionListener
 
 import kotlinx.android.synthetic.main.fragment_emgscanitem.view.*
 
 /**
- * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
+ * [RecyclerView.Adapter] that can display a [EMGScanItem] and makes a call to the
  * specified [OnListFragmentInteractionListener].
- * TODO: Replace the implementation with code for your data type.
  */
 class EMGScanItemRecyclerViewAdapter(
-        private val mValues: List<DummyItem>,
-        private val mListener: OnListFragmentInteractionListener?)
+        private val historyList: List<EMGScanItem>,
+        private val listener: OnListFragmentInteractionListener?)
     : RecyclerView.Adapter<EMGScanItemRecyclerViewAdapter.ViewHolder>() {
 
-    private val mOnClickListener: View.OnClickListener
+    private val onClickListener: View.OnClickListener
 
     init {
-        mOnClickListener = View.OnClickListener { v ->
-            val item = v.tag as DummyItem
+        onClickListener = View.OnClickListener { v ->
+            val item = v.tag as EMGScanItem
             // Notify the active callbacks interface (the activity, if the fragment is attached to
             // one) that an item has been selected.
-            mListener?.onListFragmentInteraction(item)
+            listener?.onListFragmentInteraction(item)
         }
     }
 
@@ -40,24 +38,22 @@ class EMGScanItemRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = mValues[position]
-        holder.mIdView.text = item.id
-        holder.mContentView.text = item.content
+        val item = historyList[position]
+        holder.dateView.text = item.date
+        holder.descriptionView.text = item.description
+        holder.valueView.text = String.format("%.2f", item.value)
 
-        with(holder.mView) {
+        with(holder.view) {
             tag = item
-            setOnClickListener(mOnClickListener)
+            setOnClickListener(onClickListener)
         }
     }
 
-    override fun getItemCount(): Int = mValues.size
+    override fun getItemCount(): Int = historyList.size
 
-    inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-        val mIdView: TextView = mView.item_number
-        val mContentView: TextView = mView.content
-
-        override fun toString(): String {
-            return super.toString() + " '" + mContentView.text + "'"
-        }
+    inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+        val valueView: TextView = view.value
+        val descriptionView: TextView = view.description
+        val dateView: TextView = view.date
     }
 }

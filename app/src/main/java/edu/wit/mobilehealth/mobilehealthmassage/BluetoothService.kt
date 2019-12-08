@@ -29,6 +29,7 @@ internal class BluetoothService(private val activityAlerter: IBluetoothAlerts) {
 
     // Main BTLE device callback where much of the logic occurs.
     private val callback = object : BluetoothGattCallback() {
+
         // Called whenever the device connection state changes, i.e. from disconnected to connected.
         override fun onConnectionStateChange(gatt: BluetoothGatt, status: Int, newState: Int) {
             super.onConnectionStateChange(gatt, status, newState)
