@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_history.*
 import kotlinx.android.synthetic.main.fragment_emgscanitem.view.*
 
-class HistoryActivity : AppCompatActivity(), EMGHistoryListFragment.OnListFragmentInteractionListener {
+class HistoryActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,9 +26,5 @@ class HistoryActivity : AppCompatActivity(), EMGHistoryListFragment.OnListFragme
             finish()
         }
         return super.onOptionsItemSelected(item)
-    }
-
-
-    override fun onListFragmentInteraction(item: EMGScanItem?) {
     }
 }

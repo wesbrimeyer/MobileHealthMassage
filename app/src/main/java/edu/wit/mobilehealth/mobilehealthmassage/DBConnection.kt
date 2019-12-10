@@ -5,7 +5,6 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log
-import java.util.*
 
 class DBConnection {
 
@@ -59,7 +58,7 @@ class DBConnection {
     }
 
     fun getAverageValue(): Float {
-        var result: Float = 1000F
+        var result = 1000F
         val columns = arrayOf("avg(value)")
         val cursor: Cursor = db.query(EMG_TABLE, columns, null, null, null, null, null)
         while (cursor.moveToNext()) {

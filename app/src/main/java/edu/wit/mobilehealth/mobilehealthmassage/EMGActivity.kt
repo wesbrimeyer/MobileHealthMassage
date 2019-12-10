@@ -28,7 +28,6 @@ class EMGActivity : AppCompatActivity(), IBluetoothAlerts {
     private var arduino: ArduinoController? = null
     private var emgReadings = mutableListOf<PointValue>()
     private var averageReading = 0F
-    ///private val dbConn = DBConnection.instance(applicationContext)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,10 +48,6 @@ class EMGActivity : AppCompatActivity(), IBluetoothAlerts {
             this.subtitle = "Searching for device..."
             this.setBackgroundDrawable(getDrawable(android.R.color.holo_red_light))
         }
-
-//        val dbConn = DBConnection.instance(this)
-//        dbConn.addEMG(22F, "Arm")
-//        dbConn.getScansList()
 
     }
 
